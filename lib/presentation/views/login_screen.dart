@@ -6,6 +6,8 @@ import 'package:new1/presentation/widgets/custom_buttons.dart';
 import 'package:new1/presentation/widgets/custom_textfield.dart';
 import 'package:new1/soruce/data_source/local_data_source.dart';
 
+import '../../models/user.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

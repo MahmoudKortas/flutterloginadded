@@ -7,6 +7,8 @@ import 'package:new1/presentation/widgets/custom_textfield.dart';
 import 'package:new1/providers/posts_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../soruce/data_source/local_data_source.dart';
+
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
   @override
@@ -19,11 +21,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
   XFile? _image;
   String? _title;
   String? _description;
+  late final DbHelper dbHelper;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    dbHelper = DbHelper();
   }
 
   Future pickImage() async {
@@ -79,12 +82,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           title: _title,
                           description: _description,
                           image: _image!.path,
-                          isLike: false,
+                          isLike: 0,
                           name: "Welcome",
-                          isFile: true);
-                      Provider.of<PostsProivider>(context, listen: false)
-                          .AddPost(post);
-                      Navigator.of(context).pop();
+                          isFile: 0);
+                      /*Provider.of<PostsProivider>(context, listen: false)
+                          .AddPost(post);*/
+                      dbHelper
+                          .savePost(post)
+                          .then((value) => Navigator.of(context).pop());
                     }
                   },
                   child: const Text("Add Post"))

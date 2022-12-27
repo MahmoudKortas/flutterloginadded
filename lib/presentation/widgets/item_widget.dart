@@ -16,7 +16,7 @@ class ItemWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          post!.isFile!
+          post!.isFile==0
               ? Image.file(
                   File(post!.image!),
                   height: 150,
@@ -63,7 +63,7 @@ class ItemWidget extends StatelessWidget {
                 IconButton(
                     onPressed: onPressed,
                     icon: Icon(
-                      post!.isLike!
+                      post!.isLike==0
                           ? Icons.favorite
                           : Icons.favorite_border_outlined,
                       color: Colors.red,

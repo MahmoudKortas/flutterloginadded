@@ -34,10 +34,11 @@ class PostsProivider extends ChangeNotifier {
   }
 
   onPressedLike(int index) {
-    list[index].isLike = !list[index].isLike!;
-    if (list[index].isLike!) {
+    if (list[index].isLike == 0) {
+      list[index].isLike = 1;
       likesNumber++;
     } else {
+      list[index].isLike = 0;
       likesNumber--;
     }
     notifyListeners();
